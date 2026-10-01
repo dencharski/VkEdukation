@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.vkedukationapplication"
-        minSdk = 26
+        minSdk = 33
         targetSdk = 37
         versionCode = 1
         versionName = "1.0"
@@ -32,6 +32,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
 }
 
