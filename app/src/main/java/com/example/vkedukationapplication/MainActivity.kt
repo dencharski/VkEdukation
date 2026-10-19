@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             VkEdukationApplicationTheme {
 RootNavHost()
-               // AppDetailsContent()
+
             }
         }
     }
