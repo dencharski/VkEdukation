@@ -11,6 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.vkedukationapplication.ui.AppDetailsContent
+import com.example.vkedukationapplication.ui.CurrentAppDetailsContent
 import com.example.vkedukationapplication.ui.theme.VkEdukationApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             VkEdukationApplicationTheme {
-RootNavHost()
+                RootNavHost()
 
             }
         }
@@ -38,7 +39,7 @@ fun RootNavHost() {
         startDestination = DETAILS_DESTINATION, // Стартовый экран будет тут
     ) {
         composable(DETAILS_DESTINATION) { AppDetailsContent() }
-        composable(CURRENT_APP_DESTINATION) { }
+        composable(CURRENT_APP_DESTINATION) {  }
     }
 
 }

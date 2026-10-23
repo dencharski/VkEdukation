@@ -60,4 +60,6 @@ dependencies {
     val nav_version = "2.10.2" // Используйте актуальную
     implementation("androidx.navigation:navigation-compose:$nav_version")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
+
+
 }
