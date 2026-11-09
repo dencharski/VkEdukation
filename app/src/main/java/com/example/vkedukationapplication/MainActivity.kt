@@ -7,14 +7,24 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.vkedukationapplication.ui.AppDetailsContent
-import com.example.vkedukationapplication.ui.CurrentAppDetailsContent
+import androidx.navigation.navArgument
+import com.example.vkedukationapplication.MainActivity.Companion.CURRENT_APP_DESTINATION
+import com.example.vkedukationapplication.MainActivity.Companion.DETAILS_DESTINATION
+import com.example.vkedukationapplication.ui.current_app_screen.CurrentAppDetailsContent
+import com.example.vkedukationapplication.ui.showcase_screen.AppDetailsContent
 import com.example.vkedukationapplication.ui.theme.VkEdukationApplicationTheme
 
 class MainActivity : ComponentActivity() {
+    companion object {
+        public val DETAILS_DESTINATION = "details"
+        public val CURRENT_APP_DESTINATION = "current_app"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -29,8 +39,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun RootNavHost() {
-    val DETAILS_DESTINATION = "details"
-    val CURRENT_APP_DESTINATION = "current_app"
+
 
     val navController = rememberNavController()
 
@@ -38,18 +47,28 @@ fun RootNavHost() {
         navController = navController,
         startDestination = DETAILS_DESTINATION, // Стартовый экран будет тут
     ) {
-        composable(DETAILS_DESTINATION) { AppDetailsContent() }
-        composable(CURRENT_APP_DESTINATION) {  }
+        composable(DETAILS_DESTINATION) { AppDetailsContent(navController) }
+        composable(
+            route = CURRENT_APP_DESTINATION + "/{current_app_id}",
+            arguments = listOf(navArgument("current_app_id") { type = NavType.StringType })
+        )
+        { stackEntry ->
+            val currentAppId = stackEntry.arguments?.getString("current_app_id")
+            CurrentAppDetailsContent(currentAppId = currentAppId, navController)
+        }
     }
 
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview(modifier: Modifier = Modifier) {
+fun GreetingPreview(
+    modifier: Modifier = Modifier,
+    navController: NavController
+) {
     VkEdukationApplicationTheme {
 
-        AppDetailsContent()
+        AppDetailsContent(navController)
 
     }
 }
