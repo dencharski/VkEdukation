@@ -1,7 +1,5 @@
-package com.example.vkedukationapplication.ui
+package com.example.vkedukationapplication.ui.current_app_screen
 
-import android.graphics.Color
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
@@ -26,10 +24,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.vkedukationapplication.R
-import com.example.vkedukationapplication.R.color.teal_200
 import com.example.vkedukationapplication.domain.AppDetails
 import com.example.vkedukationapplication.domain.Category
-import com.example.vkedukationapplication.ui.theme.Purple40
 import com.example.vkedukationapplication.ui.theme.VkEdukationApplicationTheme
 import kotlin.math.roundToInt
 

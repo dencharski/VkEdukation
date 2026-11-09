@@ -1,5 +1,6 @@
-package com.example.vkedukationapplication.ui
+package com.example.vkedukationapplication.ui.showcase_screen
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,7 +24,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil3.compose.AsyncImage
+import com.example.vkedukationapplication.MainActivity
 import com.example.vkedukationapplication.R
 import com.example.vkedukationapplication.domain.AppDetails
 import com.example.vkedukationapplication.domain.Category
@@ -32,6 +36,7 @@ import com.example.vkedukationapplication.ui.theme.VkEdukationApplicationTheme
 @Composable
 fun SimilarApps(
     apps: List<AppDetails>,
+    navController: NavController,
     onItemClick: (AppDetails) -> Unit,
     modifier: Modifier = Modifier,
 
@@ -49,7 +54,9 @@ fun SimilarApps(
             Row() {
                 for (i in 0 until 3) {
                     SimilarAppItem(app = apps[page * 3 + i], onItemClick = {
+                        Log.d("vk","similarApp pagerClick content click")
 
+                        navController.navigate(MainActivity.CURRENT_APP_DESTINATION+"/${i.toString()}")
                     })
                 }
             }
@@ -59,36 +66,6 @@ fun SimilarApps(
     }
 }
 
-@Composable
-private fun SimilarAppItem(
-    app: AppDetails,
-    onItemClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        modifier = modifier.width(128.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        AsyncImage(
-            model = app.iconUrl,
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(128.dp)
-                .clip(RoundedCornerShape(16.dp)),
-        )
-        Text(text = app.name, maxLines = 2, overflow = TextOverflow.Ellipsis)
-        Button(
-            onClick = onItemClick,
-            shape = RoundedCornerShape(8.dp),
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Text(
-                text = stringResource(R.string.app_details_download),
-            )
-        }
-    }
-}
 
 @Preview
 @Composable
@@ -113,6 +90,7 @@ fun SimilarAppsPreview() {
                     description = "Легендарный рейд героев в Фэнтези РПГ. Станьте героем гильдии и зразите мастера подземелья!"
                 )
             },
+            navController = rememberNavController(),
             onItemClick = {},
             modifier = Modifier.padding(horizontal = 16.dp)
         )

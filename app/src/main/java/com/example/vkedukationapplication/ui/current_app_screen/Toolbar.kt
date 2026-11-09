@@ -1,4 +1,4 @@
-package com.example.vkedukationapplication.ui
+package com.example.vkedukationapplication.ui.current_app_screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

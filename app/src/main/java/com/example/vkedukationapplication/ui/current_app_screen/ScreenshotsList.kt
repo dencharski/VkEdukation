@@ -1,4 +1,4 @@
-package com.example.vkedukationapplication.ui
+package com.example.vkedukationapplication.ui.current_app_screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,6 +19,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil3.compose.AsyncImage
 import com.example.vkedukationapplication.R
 import com.example.vkedukationapplication.ui.theme.VkEdukationApplicationTheme
@@ -26,6 +28,7 @@ import com.example.vkedukationapplication.ui.theme.VkEdukationApplicationTheme
 @Composable
 fun ScreenshotsList(
     screenshotUrlList: List<String>,
+    navController: NavController,
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
 ) {
@@ -63,7 +66,7 @@ private fun Preview() {
                 "https://static.rustore.ru/imgproxy/dZCvNtRKKFpzOmGlTxLszUPmwi661IhXynYZGsJQvLw/preset:web_scr_lnd_335/plain/https://static.rustore.ru/apk/393868735/content/SCREENSHOT/60ec4cbc-dcf6-4e69-aa6f-cc2da7de1af6.jpg@webp",
                 "https://static.rustore.ru/imgproxy/g5whSI1uNqaL2TUO7TFfM8M63vXpWXNCm2vlX4Ahvc4/preset:web_scr_lnd_335/plain/https://static.rustore.ru/apk/393868735/content/SCREENSHOT/c2dde8bc-c4ab-482a-80a5-2789149f598d.jpg@webp",
                 "https://static.rustore.ru/imgproxy/TjeurtC7BczOVJt74XhjGYuQnG1l4rx6zpDqyMb00GY/preset:web_scr_lnd_335/plain/https://static.rustore.ru/apk/393868735/content/SCREENSHOT/08318f76-7a9c-43aa-b4a7-1aa878d00861.jpg@webp",
-            ),
+            ), navController = rememberNavController(),
             contentPadding = PaddingValues(horizontal = 16.dp),
         )
     }
